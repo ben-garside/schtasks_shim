@@ -22,19 +22,3 @@ def run(cmd, errMsg=None):
         return output
     except Exception:
         return Exception
-
-def _get_property(SCHTASK_CMD, prop):
-    if os.path.isfile(SCHTASK_CMD):
-        cmd = "{} LIST {} /XML".format(SCHTASK_CMD, prop)
-        results = run(cmd)
-        try:
-            tree = ET.fromstring(results)
-        except Exception as e:
-            tree = []
-            print("expection: {} when parsing below xml: \n {}".format(e, results))
-        
-        splitResult = [item.attrib for item in tree if len(item.attrib) > 0]
-        logger.debug("Found: {} matching Query: {}".format(len(splitResult), prop))
-        return splitResult
-    else:
-        return []

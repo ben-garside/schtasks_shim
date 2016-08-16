@@ -16,11 +16,9 @@ def lists(action, style="/FO CSV /V"):
         output = process_csv(output)
     return output
 
-def action(action, prop, name, style="/XML", processXml=True):
-    cmd = '{} {} {} "{}" {}'.format(SCHTASK_CMD, action, prop, name, style)
+def action(action, name):
+    cmd = '{} /{} /TN "{}" '.format(SCHTASK_CMD, action, name)
     output = run(cmd)
-    if processXml:
-        output = process_xml(output)
     return output
 
 def process_csv(csv):

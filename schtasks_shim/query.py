@@ -1,7 +1,7 @@
 from schtasks_shim.helper import lists, action
 import logging
 
-log = logging.getLogger(__name__)
+logger = logging.getLogger(__name__)
 
 def get_all():
     """ return all tasks
@@ -29,7 +29,6 @@ def get_by_name(name, partial=False):
 def get_by_status(status):
     """ return task by status, a list of tasks is returned
     """
-
     match_tasks = []
     tasks = lists("Query")
     match_tasks = [task for task in tasks if task['Status'].lower().find(status.lower()) > -1]
