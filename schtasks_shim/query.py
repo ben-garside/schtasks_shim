@@ -4,13 +4,33 @@ import logging
 log = logging.getLogger(__name__)
 
 def get_all():
-    """ return all sites
+    """ return all tasks
     """
-    sites = lists("Query")
-    return sites
+    tasks = lists("Query")
+    return tasks
+
 
 def get_by_name(name, partial=False):
-    """ return all sites
+    """ return task by name, if partial is true
+        a list of tasks is returned otherwise a single task
     """
-    sites = lists("Query /TN {}".format(name))
-    return sites
+    if not partial:
+        tasks = lists('Query /TN "{}"'.format(name))
+        if len(tasks):
+            return tasks[0]
+        else:
+            return None
+    else:
+        match_tasks = []
+        tasks = lists("Query")
+        match_tasks = [task for task in tasks if task['TaskName'].lower().find(name.lower()) > -1]
+        return match_tasks
+
+def get_by_status(status):
+    """ return task by status, a list of tasks is returned
+    """
+
+    match_tasks = []
+    tasks = lists("Query")
+    match_tasks = [task for task in tasks if task['Status'].lower().find(status.lower()) > -1]
+    return match_tasks
