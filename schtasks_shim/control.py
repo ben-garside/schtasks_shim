@@ -8,7 +8,7 @@ def run_by_name(name):
     result = action("run", name)
     logger.debug("Result: {}".format(result))
     if "SUCCESS:" in result:
-        return result
+        return {"message": result}
     return None
 
 
@@ -16,5 +16,5 @@ def end_by_name(name):
     result = action("end", name)
     logger.debug("Result: {}".format(result))
     if "SUCCESS:" in result:
-        return result
+        return {"message": result}
     return None
