@@ -16,10 +16,12 @@ def lists(action, style="/FO CSV /V"):
         output = process_csv(output)
     return output
 
+
 def action(action, name):
     cmd = '{} /{} /TN "{}" '.format(SCHTASK_CMD, action, name)
     output = run(cmd)
     return output
+
 
 def process_csv(csv):
     logger.debug("Processing the csv...")

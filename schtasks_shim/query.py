@@ -26,6 +26,7 @@ def get_by_name(name, partial=False):
         match_tasks = [task for task in tasks if task['TaskName'].lower().find(name.lower()) > -1]
         return match_tasks
 
+
 def get_by_status(status):
     """ return task by status, a list of tasks is returned
     """
