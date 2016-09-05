@@ -9,16 +9,23 @@ def lists(action, style="/FO CSV /V"):
     cmd = '{} /{} {}'.format(SCHTASK_CMD, action, style)
     logger.debug("Runnign command: {}".format(cmd))
     output = run(cmd)
-    if 'None|' in "{}|".format(output):
+    logger.debug("OUTPUT: {}".format(output))
+    if output['status'] == False:
         return ""
     if "CSV" in style:
         logger.debug("CSV file provided")
-        output = process_csv(output)
+        output = process_csv(output['message'])
     return output
 
 
 def action(action, name):
     cmd = '{} /{} /TN "{}" '.format(SCHTASK_CMD, action, name)
+    output = run(cmd)
+    return output
+
+
+def edit(action, cmd):
+    cmd = '{} /{} {} '.format(SCHTASK_CMD, action, cmd)
     output = run(cmd)
     return output
 

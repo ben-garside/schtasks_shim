@@ -1,4 +1,4 @@
-from schtasks_shim.helper import lists, action
+from schtasks_shim.helper import lists
 import logging
 
 logger = logging.getLogger(__name__)
@@ -16,6 +16,7 @@ def get_by_name(name, partial=False):
     """
     if not partial:
         tasks = lists('Query /TN "{}"'.format(name))
+        logger.debug(tasks)
         if len(tasks):
             return tasks[0]
         else:
