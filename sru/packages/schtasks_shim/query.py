@@ -1,7 +1,9 @@
-from schtasks_shim.helper import lists
+from .helper import lists
 import logging
 
+
 logger = logging.getLogger(__name__)
+
 
 def get_all():
     """ return all tasks

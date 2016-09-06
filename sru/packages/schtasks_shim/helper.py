@@ -1,9 +1,11 @@
-from schtasks_shim.handler import run
-from schtasks_shim.config import SCHTASK_CMD
+from .handler import run
+from .config import SCHTASK_CMD
 import xml.etree.cElementTree as ET
 import logging
 
+
 logger = logging.getLogger()
+
 
 def lists(action, style="/FO CSV /V"):
     cmd = '{} /{} {}'.format(SCHTASK_CMD, action, style)

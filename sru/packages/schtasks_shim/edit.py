@@ -1,4 +1,4 @@
-from schtasks_shim.helper import lists, action, edit
+from .helper import lists, action, edit
 import re
 import logging
 

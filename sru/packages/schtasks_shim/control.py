@@ -1,5 +1,6 @@
-from schtasks_shim.helper import action
+from .helper import action
 import logging
+
 
 logger = logging.getLogger(__name__)
 
