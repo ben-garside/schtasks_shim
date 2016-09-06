@@ -16,9 +16,7 @@ setup(
     version=version,
     author="Benjamin Garside",
     author_email="abgarside<at>gmail<dot>com",
-    packages=[
-        "schtasks_shim"
-        ],
+    packages=find_packages(),
     include_package_data=True,
     url="http://github.com/ben-garside/schtasks_shim/dist/{}/".format(version),
 
